@@ -74,7 +74,7 @@ education:
   - area: BSc Actuarial Science
     institution: Central University of Finance and Economics
     date_start: 2019-09-01
-    date_end: 2023-06-31
+    date_end: 2023-06-30
     summary: |
       GPA: 3.8/4.0
       
