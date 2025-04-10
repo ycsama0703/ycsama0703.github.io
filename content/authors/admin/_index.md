@@ -72,7 +72,7 @@ education:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
   - area: BSc Actuarial Science
-    institution: Central University of Finance and Economics
+    institution: Central University of Finance and Economics 中央财经大学
     date_start: 2019-09-01
     date_end: 2023-06-30
     summary: |
