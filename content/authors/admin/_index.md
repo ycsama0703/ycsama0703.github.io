@@ -51,20 +51,37 @@ interests:
   - Trustworthy Machine Learning and Deep Learning
 
 education:
-  - area: PhD in Digital Financial Technology
-    institution: National University of Singapore
-    date_start: 2025-09
-    date_end: 2029(Expected)
+  - area: PhD in Digital Financial Technology
+    institution: National University of Singapore
+    date_start: 2025-09
+    date_end: 2029-06(Expected)
+    summary: |
+      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+    button:
+      text: 'Read Thesis'
+      url: 'https://example.com'
+  - area: MA in Statistics
+    institution: Columbia University
+    date_start: 2023-09
+    date_end: 2025-03
+    summary: |
+      GPA: 3.9/4.0
 
-  - area: MA in Statistics
-    institution: Columbia University
-    date_start: 2023-09
-    date_end: 2025-03
-
-  - area: BSc in Actuarial Science
-    institution: Central University of Finance and Economics
-    date_start: 2019-09
-    date_end: 2023-06
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - area: BSc in Actuarial Science
+    institution: Central University of Finance and Economics 中央财经大学
+    date_start: 2019-09
+    date_end: 2023-06
+    summary: |
+      GPA: 88/100
+      
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 work:
   - position: Director of Cloud Infrastructure
