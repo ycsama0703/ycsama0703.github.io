@@ -51,32 +51,32 @@ interests:
   - Trustworthy Machine Learning and Deep Learning
 
 education:
-  - area: PhD in Digital Financial Technology
-    institution: National University of Singapore
-    date_start: 2025-09
-    date_end: 2029-06(Expected)
+  - area: PhD Artificial Intelligence
+    institution: Stanford University
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
       Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
     button:
       text: 'Read Thesis'
       url: 'https://example.com'
-  - area: MA in Statistics
-    institution: Columbia University
-    date_start: 2023-09
-    date_end: 2025-03
+  - area: MEng Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
-      GPA: 3.9/4.0
+      GPA: 3.8/4.0
 
       Courses included:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc in Actuarial Science
-    institution: Central University of Finance and Economics 中央财经大学
-    date_start: 2019-09
-    date_end: 2023-06
+  - area: BSc Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
-      GPA: 88/100
+      GPA: 3.4/4.0
       
       Courses included:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
