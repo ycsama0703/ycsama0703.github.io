@@ -1,17 +1,17 @@
 ---
 # Display name
-title: Yuncong Liu 刘云从
+title: 吳健雄
 
 # Name pronunciation (optional)
-name_pronunciation: Liou Yun Tsong
+name_pronunciation: Chien Shiung Wu
 
 # Full name (for SEO)
-first_name: Yuncong
-last_name: Liu
+first_name: Shiung Wu
+last_name: Chien
 
 # Status emoji
 status:
-  icon: 🏂
+  icon: ☕️
 
 # Is this the primary user of the site?
 superuser: true
@@ -20,52 +20,69 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: PhD Student @ NUS AIDF
+role: Chief Scientist
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: Asian Institute of Digital Finance (AIDF)
-    url: https://www.aidf.nus.edu.sg/
+  - name: OpenAI
+    url: https://openai.com/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
-  - icon: at-symbol
-    url: 'mailto:yuncongliu0703@gmail.com'
-    label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/GetResearchDev
-  - icon: brands/instagram
-    url: https://www.instagram.com/
-  - icon: brands/github
-    url: https://github.com/ycsama0703
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/in/ycliu0703/
-  - icon: academicons/google-scholar
-    url: https://scholar.google.com/
-  - icon: academicons/orcid
-    url: https://orcid.org/
+  - icon: at-symbol
+    url: 'mailto:your-email@example.com'
+    label: E-mail Me
+  - icon: brands/x
+    url: https://twitter.com/GetResearchDev
+  - icon: brands/instagram
+    url: https://www.instagram.com/
+  - icon: brands/github
+    url: https://github.com/gcushen
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/
+  - icon: academicons/orcid
+    url: https://orcid.org/
 
 interests:
-  - Generative Artificial Intelligence in Finance
-  - Trustworthy Machine Learning and Deep Learning
+  - Artificial Intelligence
+  - Computational Linguistics
+  - Information Retrieval
 
 education:
-  - area: PhD in Digital Financial Technology
-    institution: National University of Singapore
-    date_start: 2025-09
-    date_end: 2029(Expected)
+  - area: PhD Artificial Intelligence
+    institution: Stanford University
+    date_start: 2016-01-01
+    date_end: 2020-12-31
+    summary: |
+      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+    button:
+      text: 'Read Thesis'
+      url: 'https://example.com'
+  - area: MEng Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
+    summary: |
+      GPA: 3.8/4.0
 
-  - area: MA in Statistics
-    institution: Columbia University
-    date_start: 2023-09
-    date_end: 2025-03
-
-  - area: BSc in Actuarial Science
-    institution: Central University of Finance and Economics
-    date_start: 2019-09
-    date_end: 2023-06
-
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - area: BSc Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
+    summary: |
+      GPA: 3.4/4.0
+      
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
 work:
   - position: Director of Cloud Infrastructure
     company_name: GenCoin
@@ -129,6 +146,8 @@ languages:
     percent: 100
   - name: Chinese
     percent: 75
+  - name: Portuguese
+    percent: 25
 
 # Awards.
 #   Add/remove as many awards below as you like.
@@ -164,4 +183,4 @@ awards:
 
 ## About Me
 
-Hello and welcome to my homepage. I am currently a PhD student in Digital Financial Technology at the National University of Singapore. I am very interested in topics such as generative AI in finance, and trusted machine learning. Besides that, I am also a snowboard carving instructor.
+Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
