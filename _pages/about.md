@@ -6,7 +6,18 @@ redirect_from:
   - /about/
   - /about.html
 ---
-I am a Ph.D. student from [The Asian Institute of Digital Finance](https://www.aidf.nus.edu.sg),  [National University of Singapore](https://www.nus.edu.sg/), specializing in ([Digital Financial Technology](https://www.aidf.nus.edu.sg/education/phd-in-digital-finance-technology/)). My research interests include machine learning, deep learning, and generative AI for financial applications.
+I am a Ph.D. student from [The Asian Institute of Digital Finance](https://www.aidf.nus.edu.sg),  [National University of Singapore](https://www.nus.edu.sg/), specializing in ([Digital Financial Technology](https://www.aidf.nus.edu.sg/education/phd-in-digital-finance-technology/)). 
+
+
+My current research interests:
+======
+1. Machine learning and deep learning in complex system.
+2. Generative AI for financial applications.
+3. Trustworthy machine learning.
+
+
+ include machine learning, deep learning, and generative AI for financial applications.
+
 
 <!--
 I am very fortunate to be advised by [Prof. XXX](https://www.XXX.com/) of XXX Lab at the [School of Computer Science](https://cs.pku.edu.cn/), # Peking University. Previously, I was advised by [Prof. XX](https://XXX.pku.edu.cn/) from the same school.
@@ -18,3 +29,5 @@ You can find my CV here:[Yuncong Liu's Curriculum Vitae](../assets/Curriculum_Vi
 
  
 [CV](../assets/Curriculum_Vitae.pdf) | [Email](mailto:yuncongliu0703@gmail.com) | [GitHub](https://github.com/ycsama0703)
+
+
