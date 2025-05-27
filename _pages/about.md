@@ -16,8 +16,6 @@ My current research interests:
 3. Trustworthy machine learning.
 
 
- include machine learning, deep learning, and generative AI for financial applications.
-
 
 <!--
 I am very fortunate to be advised by [Prof. XXX](https://www.XXX.com/) of XXX Lab at the [School of Computer Science](https://cs.pku.edu.cn/), # Peking University. Previously, I was advised by [Prof. XX](https://XXX.pku.edu.cn/) from the same school.
