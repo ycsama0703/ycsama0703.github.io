@@ -1,5 +1,5 @@
 ---
-title: Introduction to R"
+title: Introduction to R
 collection: teaching
 type: "MBA Course"
 #permalink: /teaching/2015-spring-teaching-1
