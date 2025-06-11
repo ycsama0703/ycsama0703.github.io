@@ -37,17 +37,22 @@ body {
   overflow-wrap: break-word;
 }
 
-/* 亮色模式（无反转） */
+/* 亮色模式：设置棕色（反转后变蓝色） */
 a {
-  color: #0066cc; /* 深蓝 */
-  &:hover { color: #004499; } /* 更深蓝 */
+  color: #845608; /* 反转后会变成 #7baaf7 (浅蓝) */
+  &:hover {
+    color: #5c3902; /* 反转后会变成 #a3c4fd (更浅蓝) */
+  }
 }
 
-/* 暗色模式（使用反相值） */
+/* 暗色模式：直接设置蓝色（阻止反转） */
 body[a="dark"] a,
 body[a="auto"] a {
-  color: #ff9933; /* 反转后会变回 #0066cc（深蓝） */
-  &:hover { color: #ffbb66; } /* 反转后会变回 #004499（更深蓝） */
+  filter: invert(0) !important; /* 禁用反色 */
+  color: #7baaf7; /* 浅蓝 */
+  &:hover {
+    color: #a3c4fd; /* 更浅蓝 */
+  }
 }
 
 .post-meta { text-align: right; }
