@@ -30,28 +30,28 @@ html { height: 100%; scroll-behavior: smooth; }
 body {
   color: black;
   font-family: monospace;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.4;
   margin: 0;
   min-height: 100%;
   overflow-wrap: break-word;
 }
 
-/* 亮色模式：设置棕色（反转后变蓝色） */
+/* 亮色模式：设置深棕色（反转后变极浅蓝） */
 a {
-  color: #845608; /* 反转后会变成 #7baaf7 (浅蓝) */
+  color: #3e2600; /* 反转后会变成 #c1d9ff（极浅蓝） */
   &:hover {
-    color: #5c3902; /* 反转后会变成 #a3c4fd (更浅蓝) */
+    color: #1f1300; /* 反转后会变成 #e0ecff（超浅蓝） */
   }
 }
 
-/* 暗色模式：直接设置蓝色（阻止反转） */
+/* 暗色模式：直接显示浅蓝色（禁用反转） */
 body[a="dark"] a,
 body[a="auto"] a {
-  filter: invert(0) !important; /* 禁用反色 */
-  color: #7baaf7; /* 浅蓝 */
+  filter: invert(0) !important;
+  color: #c1d9ff; /* 极浅蓝 */
   &:hover {
-    color: #a3c4fd; /* 更浅蓝 */
+    color: #e0ecff; /* 超浅蓝 */
   }
 }
 
