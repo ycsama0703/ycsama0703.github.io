@@ -37,21 +37,20 @@ body {
   overflow-wrap: break-word;
 }
 
-/* 亮色模式：设置深棕色（反转后变极浅蓝） */
+/* 亮色模式：直接显示蓝色 */
 a {
-  color: #3e2600; /* 反转后会变成 #c1d9ff（极浅蓝） */
+  color: #7baaf7; /* 浅蓝 */
   &:hover {
-    color: #1f1300; /* 反转后会变成 #e0ecff（超浅蓝） */
+    color: #a3c4fd; /* 更浅蓝 */
   }
 }
 
-/* 暗色模式：直接显示浅蓝色（禁用反转） */
+/* 暗色模式：通过反转棕色得到蓝色 */
 body[a="dark"] a,
 body[a="auto"] a {
-  filter: invert(0) !important;
-  color: #c1d9ff; /* 极浅蓝 */
+  color: #845608; /* 反转后会变成 #7baaf7 (浅蓝) */
   &:hover {
-    color: #e0ecff; /* 超浅蓝 */
+    color: #5c3902; /* 反转后会变成 #a3c4fd (更浅蓝) */
   }
 }
 
