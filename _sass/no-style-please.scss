@@ -37,18 +37,17 @@ body {
   overflow-wrap: break-word;
 }
 
-/* 自定义链接颜色 */
-a { color: #2a6496; }  /* 深蓝色 */
-a:hover { color: #1d4b73; }
-
-/* 暗色模式下的颜色覆盖 */
-body[a="dark"] a, 
-body[a="auto"] a {
-  color: #7eb6ff;
+/* 亮色模式（无反转） */
+a {
+  color: #0066cc; /* 深蓝 */
+  &:hover { color: #004499; } /* 更深蓝 */
 }
-body[a="dark"] a:hover,
-body[a="auto"] a:hover {
-  color: #a8d0ff;
+
+/* 暗色模式（使用反相值） */
+body[a="dark"] a,
+body[a="auto"] a {
+  color: #ff9933; /* 反转后会变回 #0066cc（深蓝） */
+  &:hover { color: #ffbb66; } /* 反转后会变回 #004499（更深蓝） */
 }
 
 .post-meta { text-align: right; }
