@@ -4,19 +4,19 @@
 entries:
   - title: Welcome to my personal website.
     entries:
-      - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF,NUS</a>. Also a gamer and snowboarding instructor.
+      - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF</a>,NUS. Also a gamer and snowboarding instructor.
 
   - title: Education Background 
     entries:
       - title: National University of Singapore 
         entries:
-          -title: 2025.8 - 2028.6(Expected), PhD
+          -title: PhD, 2025.8 - 2028.6(Expected)
       - title: Columbia University 
         entries:
-          -title: 2023.9 - 2025.3, MA
+          -title: MA, 2023.9 - 2025.3
       - title: Central University of Finance and Economics (中央财经大学) 
         entries:
-          -title: 2019.9 - 2023.6, BSc
+          -title: BSc, 2019.9 - 2023.6
 
   - title: all posts
     post_list:
