@@ -96,3 +96,13 @@ img {
   display: block;
   margin: 0 auto;
 }
+
+a {
+  color: #79c1f5; 
+  text-decoration: none; 
+}
+
+a:hover {
+  color: #004499; 
+  text-decoration: underline; 
+}
