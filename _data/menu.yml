@@ -4,19 +4,25 @@
 entries:
   - title: Welcome to my personal website.
     entries:
-      - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF</a>,NUS. Also a gamer and snowboarding instructor.
+      - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF</a>, NUS. Also a gamer and snowboarding instructor.
 
   - title: Education Background 
     entries:
       - title: National University of Singapore 
         entries:
-          -title: PhD, 2025.8 - 2028.6(Expected)
+          - title: PhD, 2025.8 - 2028.6(Expected)
       - title: Columbia University 
         entries:
-          -title: MA, 2023.9 - 2025.3
+          - title: MA, 2023.9 - 2025.3
       - title: Central University of Finance and Economics (中央财经大学) 
         entries:
-          -title: BSc, 2019.9 - 2023.6
+          - title: BSc, 2019.9 - 2023.6
+
+  - title: Research Interests
+    entries:
+      - title: Machine Learning and Deep Learning in Finance.
+      - title: Financial natural language processing。
+      - title: Intelligent business systems and modeling.
 
   - title: all posts
     post_list:
