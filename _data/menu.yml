@@ -5,6 +5,14 @@ entries:
   - title: Welcome to my personal website.
     entries:
       - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF</a>, NUS. Also a gamer and snowboarding instructor.
+      - title: You can find my <a href='/assets/Curriculum_Vitae.pdf'>CV</a> here.
+
+  - title: all posts
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: See archive...
+      show_more_url: archive.html
 
   - title: Education Background 
     entries:
@@ -24,12 +32,7 @@ entries:
       - title: Financial natural language processing。
       - title: Intelligent business systems and modeling.
 
-  - title: all posts
-    post_list:
-      limit: 5
-      show_more: true
-      show_more_text: See archive...
-      show_more_url: archive.html
+  
 
   - title: posts by category
     post_list:
