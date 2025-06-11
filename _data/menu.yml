@@ -2,12 +2,21 @@
 # https://github.com/riggraz/no-style-please#customize-the-menu
 
 entries:
-  - title: info
+  - title: Welcome to my personal website.
     entries:
-      - title: a (nearly) no-CSS, fast, minimalist Jekyll theme.
-      - title: github repo
-        url: https://github.com/riggraz/no-style-please
-      - title: "used by <a href='https://riggraz.dev'>riggraz.dev</a> and <a href='https://github.com/riggraz/no-style-please/network/dependents'>many others</a>"
+      - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF,NUS</a>. Also a gamer and snowboarding instructor.
+
+  - title: Education Background 
+    entries:
+      - title: National University of Singapore 
+        entries:
+          -title: PhD in Digital Financial Technology, 2025.8 - 2028.6(Expected) 
+      - title: Columbia University 
+        entries:
+          -title: MA in Statistics, 2023.9 - 2025.3 
+      - title: Central University of Finance and Economics (中央财经大学) 
+        entries:
+          -title: BSc in Actuarial Science, 2019.9 - 2023.6 
 
   - title: all posts
     post_list:
