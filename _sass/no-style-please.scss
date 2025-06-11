@@ -37,6 +37,20 @@ body {
   overflow-wrap: break-word;
 }
 
+/* 自定义链接颜色 */
+a { color: #2a6496; }  /* 深蓝色 */
+a:hover { color: #1d4b73; }
+
+/* 暗色模式下的颜色覆盖 */
+body[a="dark"] a, 
+body[a="auto"] a {
+  color: #7eb6ff;
+}
+body[a="dark"] a:hover,
+body[a="auto"] a:hover {
+  color: #a8d0ff;
+}
+
 .post-meta { text-align: right; }
 
 h2, h3, h4, h5, h6 { margin-top: 3rem; }
