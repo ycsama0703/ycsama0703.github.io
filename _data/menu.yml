@@ -7,6 +7,12 @@ entries:
       - title: I am currently a PhD candidate at <a href='https://www.aidf.nus.edu.sg'>AIDF</a>, NUS. Also a gamer and snowboarding instructor.
       - title: You can find my <a href='/assets/Curriculum_Vitae.pdf'>CV</a> here.
       - title: Here is my <a href="https://github.com/ycsama0703">GitHub  page.</a>
+      
+  - title: Research Interests
+    entries:
+      - title: Machine Learning and Deep Learning in Finance.
+      - title: Financial natural language processing。
+      - title: Intelligent business systems and modeling.
 
   - title: Education Background 
     entries:
@@ -22,7 +28,7 @@ entries:
   
   - title: Contact Information 
     entries:
-      - title: Contact me by <a href="mailto:yuncongliu0703@gmail.com">yuncongliu0703 at gmail dot com</a>
+      - title: Contact me by <a href="mailto:yuncongliu0703@gmail.com">yuncongliu0703 at gmail dot com</a>.
       - title: Or, visit my <a href="https://www.linkedin.com/in/ycliu0703/">Linkdin personal page.</a>
       
   - title: all posts
@@ -32,15 +38,6 @@ entries:
       show_more_text: See archive...
       show_more_url: archive.html
 
-  
-
-  - title: Research Interests
-    entries:
-      - title: Machine Learning and Deep Learning in Finance.
-      - title: Financial natural language processing。
-      - title: Intelligent business systems and modeling.
-
-  
 
   - title: posts by category
     post_list:
