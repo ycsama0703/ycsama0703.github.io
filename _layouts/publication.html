@@ -1,34 +1,111 @@
 ---
-# Front Matter 可定义布局级默认值
+# 继承主布局并保留扩展能力
+layout: default
 ---
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{{ page.title }} | {{ site.title }}</title>
-</head>
-<body>
-  <article class="publication">
-    <!-- 论文标题和元数据 -->
-    <header>
-      <h1>{{ page.title }}</h1>
-      <div class="authors">{{ page.authors }}</div>
-      <div class="venue"><em>{{ page.venue }}</em>, {{ page.year }}</div>
-    </header>
 
-    <!-- 摘要或正文 -->
-    <section class="abstract">
-      {{ content }}
-    </section>
+<!-- 使用语义化HTML5标签，并添加主题兼容的CSS类 -->
+<article class="publication-content page-content">
+  <!-- 论文头部信息 -->
+  <header class="publication-header">
+    <h1 class="publication-title">{{ page.title }}</h1>
+    
+    <div class="publication-meta">
+      <!-- 作者信息（兼容多作者格式） -->
+      <div class="authors">
+        {{ page.authors | default: site.author }}
+      </div>
+      
+      <!-- 发表信息（期刊+年份） -->
+      <div class="venue">
+        <em>{{ page.venue }}</em>, 
+        <span class="year">{{ page.year }}</span>
+        
+        <!-- 显示DOI（如果有） -->
+        {% if page.doi %}
+          <span class="doi-badge">
+            <a href="https://doi.org/{{ page.doi }}" target="_blank">
+              DOI: {{ page.doi | truncate: 20 }}
+            </a>
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
 
-    <!-- 下载和链接 -->
-    <footer>
+  <!-- 论文正文区域 -->
+  <section class="publication-body">
+    {{ content }}  <!-- 这里会渲染Markdown内容 -->
+  </section>
+
+  <!-- 资源链接区 -->
+  <footer class="publication-links">
+    <div class="link-buttons">
       {% if page.pdf %}
-        <a href="{{ page.pdf | relative_url }}" class="button">Download PDF</a>
+        <a href="{{ page.pdf | relative_url }}" 
+           class="btn btn-primary" 
+           download>
+          <i class="fas fa-file-pdf"></i> PDF
+        </a>
       {% endif %}
+      
       {% if page.code %}
-        <a href="{{ page.code }}" class="button">Code Repository</a>
+        <a href="{{ page.code }}" 
+           class="btn btn-secondary"
+           target="_blank">
+          <i class="fab fa-github"></i> Code
+        </a>
       {% endif %}
-    </footer>
-  </article>
-</body>
-</html>
+      
+      {% if page.slides %}
+        <a href="{{ page.slides }}" 
+           class="btn btn-tertiary"
+           target="_blank">
+          <i class="fas fa-presentation"></i> Slides
+        </a>
+      {% endif %}
+    </div>
+  </footer>
+</article>
+
+<!-- 可选的样式增强 -->
+<style>
+  /* 继承主站变量 */
+  .publication-content {
+    font-family: inherit;
+    color: inherit;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  /* 标题与主站一致 */
+  .publication-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--heading-color);
+  }
+  
+  /* 元数据样式 */
+  .publication-meta {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  /* DOI徽章 */
+  .doi-badge {
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .publication-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>
