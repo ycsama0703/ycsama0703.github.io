@@ -33,7 +33,7 @@ entries:
       
   - title: Recent Publications
     post_list:
-      limit: 5
-      show_more: true
-      show_more_text: See all publications...
-      show_more_url: archive.html
+      limit: 1
+      #show_more: true
+      #show_more_text: See all publications...
+      #show_more_url: archive.html
