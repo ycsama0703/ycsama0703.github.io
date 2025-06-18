@@ -1,0 +1,34 @@
+---
+# Front Matter 可定义布局级默认值
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }} | {{ site.title }}</title>
+</head>
+<body>
+  <article class="publication">
+    <!-- 论文标题和元数据 -->
+    <header>
+      <h1>{{ page.title }}</h1>
+      <div class="authors">{{ page.authors }}</div>
+      <div class="venue"><em>{{ page.venue }}</em>, {{ page.year }}</div>
+    </header>
+
+    <!-- 摘要或正文 -->
+    <section class="abstract">
+      {{ content }}
+    </section>
+
+    <!-- 下载和链接 -->
+    <footer>
+      {% if page.pdf %}
+        <a href="{{ page.pdf | relative_url }}" class="button">Download PDF</a>
+      {% endif %}
+      {% if page.code %}
+        <a href="{{ page.code }}" class="button">Code Repository</a>
+      {% endif %}
+    </footer>
+  </article>
+</body>
+</html>
