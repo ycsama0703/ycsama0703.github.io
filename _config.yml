@@ -36,4 +36,4 @@ jektex:
     - ["\\Q", "\\mathbb{Q}"]
     - ["\\C", "\\mathbb{C}"]
 
-avatar: /assets/personal_image.jpg  # 确保有前导斜杠
+avatar: /assets/personal_image_v2.jpg  # 确保有前导斜杠
