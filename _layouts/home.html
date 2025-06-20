@@ -30,24 +30,13 @@ layout: default
 
   /* 原始矩形照片样式 */
   .profile-image {
-  /* 基础样式 */
-  border: none;
-  box-shadow: 
-    0 0 0 2px rgba(255, 255, 255, 0.15),
-    0 0 30px rgba(100, 180, 255, 0.2);
-  
-  /* 修正部分 */
-  filter: brightness(1.05); /* 移除所有可能导致反转的效果 */
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.3s ease;
-}
-
-  .profile-image:hover {
-    /* 安全的悬停效果 */
-    box-shadow: 
-      0 0 0 3px rgba(255, 255, 255, 0.25),
-      0 0 40px rgba(100, 180, 255, 0.3);
-    filter: brightness(1.1); /* 仅调整亮度 */
+    width: auto;       /* 保持原始宽高比 */
+    height: auto;      /* 保持原始宽高比 */
+    max-height: 300px; /* 控制最大高度 */
+    border: 1px solid #eaeaea; /* 浅色边框 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 柔和阴影 */
+    display: block;    /* 消除图片底部间隙 */
+    margin: 0 auto;    /* 水平居中 */
   }
 
   /* 响应式调整 */
