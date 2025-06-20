@@ -30,11 +30,17 @@ layout: default
 
   /* 原始矩形照片样式 */
   .profile-image {
-    border: 1px solid #f0f0f0; /* 极细浅灰边框 */
-    border-radius: 4px; /* 轻微圆角 */
-    box-shadow: none; /* 去掉阴影 */
-    padding: 4px; /* 内边距让边框更精致 */
-    background: white; /* 白色背景防止透明图片边缘异常 */
+  border: none;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1), /* 内发光 */
+    0 0 20px rgba(255, 255, 255, 0.05); /* 外发光 */
+  transition: box-shadow 0.3s ease;
+}
+
+  .profile-image:hover {
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      0 0 30px rgba(255, 255, 255, 0.1);
   }
 
   /* 响应式调整 */
