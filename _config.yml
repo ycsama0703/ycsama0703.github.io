@@ -35,3 +35,5 @@ jektex:
   macros:
     - ["\\Q", "\\mathbb{Q}"]
     - ["\\C", "\\mathbb{C}"]
+
+avatar: /assets/personal_image.jpg  # 确保有前导斜杠
