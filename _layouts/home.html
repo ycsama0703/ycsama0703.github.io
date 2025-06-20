@@ -1,74 +1,46 @@
 ---
 layout: default
 ---
-<div class="profile-layout">
-  <!-- 左侧照片 -->
-  <div class="profile-column-left">
-    <img src="{{ '/assets/personal_image.jpg' | relative_url }}" 
-         alt="{{ site.title }}" 
-         class="profile-image-left">
-  </div>
-
-  <!-- 右侧文字 -->
-  <div class="profile-column-right">
-    <header>
-      <h1>{{ site.title }}</h1>
-      {%-if site.theme_config.show_description-%}
-        <p>{{ site.description }}</p>
-      {%-endif-%}
-    </header>
-    {%-include menu_item.html collection=site.data.menu.entries-%}
-  </div>
+<!-- 个人照片部分 -->
+<div class="profile-banner">
+  <img src="{{ '/assets/personal_image_v2.jpg' | relative_url }}" 
+       alt="{{ site.title }}" 
+       class="profile-image">
 </div>
+
+<header>
+  <h1>{{ site.title }}</h1>
+  {%-if site.theme_config.show_description-%}
+    <p>{{ site.description }}</p>
+  {%-endif-%}
+</header>
+
+{%-include menu_item.html collection=site.data.menu.entries-%}
 
 {{ content }}
 
 <style>
-  /* 整体布局容器 */
-  .profile-layout {
-    display: flex;
-    gap: 40px; /* 控制图文间距 */
-    align-items: flex-start; /* 顶部对齐 */
-    margin-bottom: 3rem;
-  }
-
-  /* 左侧照片列 */
-  .profile-column-left {
-    flex: 0 0 280px; /* 固定宽度 */
-  }
-
-  /* 右侧文字列 */
-  .profile-column-right {
-    flex: 1; /* 占据剩余空间 */
-    min-width: 0; /* 防止内容溢出 */
-  }
-
-  /* 深色背景专用图片样式 */
-  .profile-image-left {
+  /* 照片容器样式 */
+  .profile-banner {
     width: 100%;
-    max-width: 280px;
-    height: auto;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 
-      0 0 15px rgba(0,0,0,0.5),
-      0 0 0 1px rgba(255,255,255,0.05);
-    filter: brightness(1.03) contrast(1.05);
+    max-width: 800px;  /* 限制最大宽度 */
+    margin: 0 auto 2rem; /* 居中并添加底部间距 */
+    text-align: center;
   }
 
-  /* 响应式设计：小屏幕改为上下排列 */
+  /* 原始矩形照片样式 */
+  .profile-image {
+    border: 1px solid #f0f0f0; /* 极细浅灰边框 */
+    border-radius: 4px; /* 轻微圆角 */
+    box-shadow: none; /* 去掉阴影 */
+    padding: 4px; /* 内边距让边框更精致 */
+    background: white; /* 白色背景防止透明图片边缘异常 */
+  }
+
+  /* 响应式调整 */
   @media (max-width: 768px) {
-    .profile-layout {
-      flex-direction: column;
-      gap: 20px;
-    }
-    .profile-column-left {
-      flex: none;
-      width: 100%;
-      text-align: center;
-    }
-    .profile-image-left {
-      max-width: 200px;
-      margin: 0 auto;
+    .profile-image {
+      max-height: 200px;
     }
   }
 </style>
