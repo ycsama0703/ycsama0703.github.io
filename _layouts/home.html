@@ -1,6 +1,13 @@
 ---
 layout: default
 ---
+<!-- 个人照片部分 -->
+<div class="profile-banner">
+  <img src="{{ '/assets/personal_image.jpg' | relative_url }}" 
+       alt="{{ site.title }}" 
+       class="profile-image">
+</div>
+
 <header>
   <h1>{{ site.title }}</h1>
   {%-if site.theme_config.show_description-%}
@@ -11,3 +18,31 @@ layout: default
 {%-include menu_item.html collection=site.data.menu.entries-%}
 
 {{ content }}
+
+<style>
+  /* 照片容器样式 */
+  .profile-banner {
+    width: 100%;
+    max-width: 800px;  /* 限制最大宽度 */
+    margin: 0 auto 2rem; /* 居中并添加底部间距 */
+    text-align: center;
+  }
+
+  /* 原始矩形照片样式 */
+  .profile-image {
+    width: auto;       /* 保持原始宽高比 */
+    height: auto;      /* 保持原始宽高比 */
+    max-height: 300px; /* 控制最大高度 */
+    border: 1px solid #eaeaea; /* 浅色边框 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 柔和阴影 */
+    display: block;    /* 消除图片底部间隙 */
+    margin: 0 auto;    /* 水平居中 */
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .profile-image {
+      max-height: 200px;
+    }
+  }
+</style>
