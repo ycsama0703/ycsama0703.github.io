@@ -30,19 +30,24 @@ layout: default
 
   /* 原始矩形照片样式 */
   .profile-image {
+  /* 基础样式 */
   border: none;
   box-shadow: 
-    0 0 0 2px rgba(255, 255, 255, 0.15),  /* 加粗内发光边框 */
-    0 0 30px rgba(100, 180, 255, 0.2);     /* 蓝色调外发光增强对比 */
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  filter: brightness(1.05) saturate(1.1);   /* 轻微提升图片亮度和饱和度 */
+    0 0 0 2px rgba(255, 255, 255, 0.15),
+    0 0 30px rgba(100, 180, 255, 0.2);
+  
+  /* 修正部分 */
+  filter: brightness(1.05); /* 移除所有可能导致反转的效果 */
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease;
 }
 
   .profile-image:hover {
+    /* 安全的悬停效果 */
     box-shadow: 
-      0 0 0 3px rgba(255, 255, 255, 0.25),  /* 悬停时更亮的边框 */
-      0 0 40px rgba(100, 180, 255, 0.3);     /* 扩大发光范围 */
-    filter: brightness(1.08) saturate(1.2);   /* 悬停时进一步提亮 */
+      0 0 0 3px rgba(255, 255, 255, 0.25),
+      0 0 40px rgba(100, 180, 255, 0.3);
+    filter: brightness(1.1); /* 仅调整亮度 */
   }
 
   /* 响应式调整 */
