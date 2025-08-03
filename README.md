@@ -25,7 +25,7 @@ If you haven't already created your blog using Jekyll, follow the [instructions]
 
 NOTE: if you are using Jekyll with GitHub Pages, see the [GitHub Pages installation section](#github-pages-installation).
 
-This is a simple test.
+This is a simple test v2.
 
 Then, to style your blog with this theme, add this line to your Jekyll site's `Gemfile`:
 
