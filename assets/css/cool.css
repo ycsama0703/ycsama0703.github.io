@@ -104,18 +104,18 @@ main.page-content {
 
 /* ---------- Heading phosphor glow + blink caret ----------
    Colors below are PRE-INVERTED so that the body filter:invert(1)
-   in dark mode renders them as the intended amber/gold phosphor.
-   Target rendered color in dark mode ≈ rgb(255, 200, 110) (warm amber). */
+   in dark mode renders them as the intended violet/purple phosphor.
+   Target rendered color in dark mode ≈ rgb(170, 130, 255) (violet). */
 h1, h2, h3 {
   text-shadow:
-    0 0 4px rgba(0, 55, 145, 0.55),
-    0 0 12px rgba(20, 80, 160, 0.35);
+    0 0 4px rgba(85, 125, 0, 0.55),
+    0 0 12px rgba(110, 90, 0, 0.35);
   transition: text-shadow 0.2s steps(4);
 }
 h1:hover, h2:hover, h3:hover {
   text-shadow:
-    0 0 6px rgba(0, 40, 130, 0.95),
-    0 0 18px rgba(0, 60, 140, 0.7);
+    0 0 6px rgba(75, 120, 0, 0.95),
+    0 0 18px rgba(95, 100, 0, 0.7);
 }
 h1::after {
   content: "_";
@@ -150,8 +150,8 @@ a:hover::after {
   transform-origin: left center;
 }
 a:hover {
-  /* pre-inverted: renders as warm amber in dark mode */
-  text-shadow: 0 0 6px rgba(0, 50, 130, 0.9);
+  /* pre-inverted: renders as violet in dark mode */
+  text-shadow: 0 0 6px rgba(85, 125, 0, 0.9);
 }
 
 /* ---------- Image: keep pixel feel, no rounded corners ---------- */
@@ -162,21 +162,21 @@ img {
 }
 img:hover {
   transform: translate(-2px, -2px);
-  /* pre-inverted: shows as warm amber shadow */
-  box-shadow: 4px 4px 0 rgba(0, 60, 130, 0.6);
+  /* pre-inverted: renders as violet shadow */
+  box-shadow: 4px 4px 0 rgba(85, 125, 0, 0.6);
 }
 
 /* ---------- Code / blockquote (colors pre-inverted for dark mode) ---------- */
 blockquote {
-  border-left: 4px solid rgba(0, 55, 130, 0.7) !important;
+  border-left: 4px solid rgba(85, 125, 0, 0.7) !important;
   padding-left: 0.8em !important;
   background: rgba(225, 225, 225, 0.25) !important;
 }
 code, pre {
   background: rgba(255, 255, 255, 0.92) !important;
-  color: #471700 !important; /* renders as warm amber */
+  color: #2d1066 !important; /* renders as light violet */
   border-radius: 0 !important;
-  border: 1px solid rgba(0, 55, 130, 0.3);
+  border: 1px solid rgba(85, 125, 0, 0.3);
   padding: 0 4px;
 }
 
@@ -198,7 +198,7 @@ main.page-content .w ul.menu-top { padding-left: 0 !important; list-style: none 
 main.page-content .w ul.menu-top > li {
   font-family: 'Press Start 2P', 'VT323', monospace !important;
   font-size: 14px !important;
-  color: rgb(0, 55, 145) !important;       /* renders as amber after body invert */
+  color: rgb(85, 125, 0) !important;       /* renders as amber after body invert */
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
   margin-top: 2.5rem !important;
@@ -231,10 +231,10 @@ main.page-content .w ul.menu-top > ul li {
 }
 
 /* ---------- Highlight self in author lists ----------
-   Pre-inverted: color rgb(0, 55, 145) renders as warm amber rgb(255, 200, 110)
+   Pre-inverted: color rgb(85, 125, 0) renders as violet rgb(170, 130, 255)
    in dark mode, matching the heading phosphor glow. */
 .me {
-  color: rgb(0, 55, 145);
+  color: rgb(85, 125, 0);
   font-weight: bold;
   text-decoration: underline;
   text-underline-offset: 2px;

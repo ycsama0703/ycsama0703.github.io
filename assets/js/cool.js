@@ -61,7 +61,7 @@
 
       // pixel-style square particle
       const s = Math.max(2, Math.round(p.r * 1.6));
-      ctx.fillStyle = "rgba(255, 200, 110, 0.9)";
+      ctx.fillStyle = "rgba(170, 130, 255, 0.9)";
       ctx.fillRect(Math.round(p.x), Math.round(p.y), s, s);
     }
 
@@ -72,7 +72,7 @@
         const dx = a.x - b.x, dy = a.y - b.y;
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < LINK_DIST) {
-          ctx.strokeStyle = `rgba(255, 200, 110, ${0.22 * (1 - d / LINK_DIST)})`;
+          ctx.strokeStyle = `rgba(170, 130, 255, ${0.22 * (1 - d / LINK_DIST)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
