@@ -190,6 +190,39 @@ html, body {
 }
 a, button { cursor: pointer; }
 
+/* ---------- Top-level menu section titles ----------
+   Press Start 2P pixel font, amber phosphor color, uppercase, extra
+   spacing so they read as section headers vs. inline content. */
+ul.menu-top { padding-left: 0; list-style: none; }
+ul.menu-top > li {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 13px !important;
+  color: rgb(0, 55, 145); /* renders as amber after body invert */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2.2rem;
+  line-height: 1.6;
+}
+/* First top-level item gets less top margin (intro line) */
+ul.menu-top > li:first-child {
+  margin-top: 1rem;
+  text-transform: none;
+  font-family: 'VT323', monospace !important;
+  font-size: 22px !important;
+  color: inherit;
+  letter-spacing: 0.5px;
+}
+/* Children of top-level items: revert to body styling */
+ul.menu-top > li > ul { padding-left: 1.5em; }
+ul.menu-top > li > ul li {
+  font-family: 'VT323', 'Courier New', monospace !important;
+  font-size: 20px !important;
+  color: inherit;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  margin-top: 0.2rem;
+}
+
 /* ---------- Highlight self in author lists ----------
    Pre-inverted: color rgb(0, 55, 145) renders as warm amber rgb(255, 200, 110)
    in dark mode, matching the heading phosphor glow. */

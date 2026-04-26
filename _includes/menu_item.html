@@ -1,4 +1,4 @@
-<ul>
+<ul{% if include.top %} class="menu-top"{% endif %}>
   {%-for item in include.collection-%}
     <li>
     {%- if item.url -%}
