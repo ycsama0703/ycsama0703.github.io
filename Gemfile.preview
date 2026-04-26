@@ -1,0 +1,12 @@
+# Local-preview only Gemfile (does not affect GitHub Pages build).
+# Use:  BUNDLE_GEMFILE=Gemfile.preview bundle install
+#       BUNDLE_GEMFILE=Gemfile.preview bundle exec jekyll serve --livereload
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.4"
+gem "jekyll-remote-theme"
+gem "jekyll-feed"
+gem "jekyll-seo-tag"
+gem "jektex"
+gem "kramdown-parser-gfm"
+gem "webrick"

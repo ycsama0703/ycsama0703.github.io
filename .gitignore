@@ -1,9 +1,12 @@
 *.gem
 *.css
 *.css.map
+!assets/css/cool.css
 .bundle
 .jekyll-cache
+.jektex-cache
 .sass-cache
 _site
 vendor
 Gemfile.lock
+Gemfile.preview.lock

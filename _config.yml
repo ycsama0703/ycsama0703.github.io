@@ -20,6 +20,11 @@ theme_config:
   show_description: false # show blog description in home page
   lowercase_titles: true # show titles in lowercase in lists
 
+exclude:
+  - .jektex-cache
+  - Gemfile.preview
+  - Gemfile.preview.lock
+
 sass:
   style: compressed
 
