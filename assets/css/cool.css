@@ -191,36 +191,43 @@ html, body {
 a, button { cursor: pointer; }
 
 /* ---------- Top-level menu section titles ----------
-   Press Start 2P pixel font, amber phosphor color, uppercase, extra
-   spacing so they read as section headers vs. inline content. */
-ul.menu-top { padding-left: 0; list-style: none; }
-ul.menu-top > li {
+   Pixel font + amber phosphor + uppercase so they read as section headers.
+   High specificity + !important on everything to override the broad
+   "body, p, li, ..." font rule earlier in this file. */
+main.page-content .w ul.menu-top { padding-left: 0 !important; list-style: none !important; margin: 0 !important; }
+main.page-content .w ul.menu-top > li {
   font-family: 'Press Start 2P', 'VT323', monospace !important;
-  font-size: 13px !important;
-  color: rgb(0, 55, 145); /* renders as amber after body invert */
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 2.2rem;
-  line-height: 1.6;
+  font-size: 14px !important;
+  color: rgb(0, 55, 145) !important;       /* renders as amber after body invert */
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 0.6rem !important;
+  line-height: 1.6 !important;
+  list-style: none !important;
+  padding-left: 0 !important;
 }
-/* First top-level item gets less top margin (intro line) */
-ul.menu-top > li:first-child {
-  margin-top: 1rem;
-  text-transform: none;
+/* First top-level item is the intro line, not a section title */
+main.page-content .w ul.menu-top > li:first-child {
+  margin-top: 0.5rem !important;
+  text-transform: none !important;
   font-family: 'VT323', monospace !important;
   font-size: 22px !important;
-  color: inherit;
-  letter-spacing: 0.5px;
+  color: inherit !important;
+  letter-spacing: 0.5px !important;
+  list-style: disc !important;
+  padding-left: 0 !important;
+  margin-left: 1.5em;
 }
 /* Children of top-level items: revert to body styling */
-ul.menu-top > li > ul { padding-left: 1.5em; }
-ul.menu-top > li > ul li {
+main.page-content .w ul.menu-top > ul { padding-left: 2em !important; margin: 0 !important; }
+main.page-content .w ul.menu-top > ul li {
   font-family: 'VT323', 'Courier New', monospace !important;
   font-size: 20px !important;
-  color: inherit;
-  text-transform: none;
-  letter-spacing: 0.5px;
-  margin-top: 0.2rem;
+  color: inherit !important;
+  text-transform: none !important;
+  letter-spacing: 0.5px !important;
+  margin-top: 0.2rem !important;
 }
 
 /* ---------- Highlight self in author lists ----------
