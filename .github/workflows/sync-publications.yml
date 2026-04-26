@@ -1,0 +1,43 @@
+name: Sync Publications from OpenReview
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # daily 06:17 UTC
+  workflow_dispatch:        # manual trigger button in Actions tab
+  push:
+    paths:
+      - "scripts/sync_publications.py"
+      - ".github/workflows/sync-publications.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install openreview-py pyyaml
+
+      - name: Fetch publications
+        env:
+          OPENREVIEW_PROFILE_ID: "~Yuncong_Liu6"
+        run: python scripts/sync_publications.py
+
+      - name: Commit changes if any
+        run: |
+          if [[ -n "$(git status --porcelain _data/publications.yml)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add _data/publications.yml
+            git commit -m "Sync publications from OpenReview"
+            git push
+          else
+            echo "No changes."
+          fi

@@ -1,0 +1,27 @@
+- title: 'FinGPT: Enhancing Sentiment-Based Stock Movement Prediction with Dissemination-Aware
+    and Context-Enriched LLMs'
+  authors:
+  - Yixuan Liang
+  - Yuncong Liu
+  - Boyu Zhang
+  - Christina Dan Wang
+  - Hongyang Yang
+  venue: Good-Data
+  year: '2025'
+  abstract: Financial sentiment analysis is crucial for understanding the influence
+    of news on stock prices. Recently, large language models (LLMs) have been widely
+    adopted for this purpose due to their advanced text analysis capabilities. However,
+    these models often only consider the news content itself, ignoring its dissemination,
+    which hampers accurate prediction of short-term stock movements. Additionally,
+    current methods often lack sufficient contextual data and explicit instructions
+    in their prompts, limiting LLMs' ability to interpret news. In this paper, we
+    propose a data-driven approach that enhances LLM-powered sentiment-based stock
+    movement predictions by incorporating news dissemination breadth, contextual data,
+    and explicit instructions. We cluster recent company-related news to assess its
+    reach and influence, enriching prompts with more specific data and precise instructions.
+    This data is used to construct an instruction tuning dataset to fine-tune an LLM
+    for predicting short-term stock price movements. Our experimental results show
+    that our approach improves prediction accuracy by 8\% compared to existing methods.
+  pdf: https://openreview.net/pdf/504f799402a0feef4aa03cbe6508ec78fbb028e5.pdf
+  openreview: https://openreview.net/forum?id=l2nHuTk6nc
+  id: l2nHuTk6nc
