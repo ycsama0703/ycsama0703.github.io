@@ -190,6 +190,17 @@ html, body {
 }
 a, button { cursor: pointer; }
 
+/* ---------- Highlight self in author lists ----------
+   Pre-inverted: color rgb(0, 55, 145) renders as warm amber rgb(255, 200, 110)
+   in dark mode, matching the heading phosphor glow. */
+.me {
+  color: rgb(0, 55, 145);
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   body::before, main.page-content, a::after, h1::after { animation: none; }

@@ -19,6 +19,29 @@
      -%}
     {%-endif-%}
 
+    {%-if item.data_publications-%}
+      <ul>
+        {%-for p in site.data.publications-%}
+          <li>
+            {%- if p.openreview -%}<a href="{{ p.openreview }}">{{ p.title }}</a>{%- else -%}{{ p.title }}{%- endif -%}
+            <ul>
+              <li>
+                {%- for a in p.authors -%}
+                  {%- if a == site.author -%}<span class="me">{{ a }}</span>{%- else -%}{{ a }}{%- endif -%}
+                  {%- unless forloop.last %}, {% endunless -%}
+                {%- endfor -%}
+              </li>
+              <li>
+                {%- if p.venue %}{{ p.venue }}{% endif -%}
+                {%- if p.year %}, {{ p.year }}{% endif -%}
+                {%- if p.pdf %} · <a href="{{ p.pdf }}">PDF</a>{% endif -%}
+              </li>
+            </ul>
+          </li>
+        {%-endfor-%}
+      </ul>
+    {%-endif-%}
+
     {%-if item.entries-%}
       {%-include menu_item.html collection=item.entries-%}
     {%-endif-%}
