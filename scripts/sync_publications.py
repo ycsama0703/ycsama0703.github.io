@@ -28,6 +28,13 @@ def _content_get(content, key, default=""):
     return v
 
 
+# Venue overrides — OpenReview's `venue` field is sometimes just the workshop
+# slug; map to a more readable display name here.
+VENUE_OVERRIDES = {
+    "Good-Data": "AAAI Good-Data",
+}
+
+
 def normalize(note, api_version):
     c = note.content or {}
     title = _content_get(c, "title", "").strip()
@@ -35,6 +42,7 @@ def normalize(note, api_version):
     if isinstance(authors, str):
         authors = [a.strip() for a in authors.split(",")]
     venue = _content_get(c, "venue", "") or _content_get(c, "venueid", "")
+    venue = VENUE_OVERRIDES.get(venue, venue)
     abstract = _content_get(c, "abstract", "") or ""
     pdf = _content_get(c, "pdf", "")
     forum = note.forum or note.id
