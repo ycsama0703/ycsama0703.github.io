@@ -8,6 +8,10 @@ entries:
       - title: You can find my <a href='/assets/Curriculum_Vitae.pdf'>CV</a> here.
       - title: My <a href="https://scholar.google.com/citations?user=1shkb2gAAAAJ&hl=en">Google Scholar</a> · <a href="https://openreview.net/profile?id=~Yuncong_Liu6">OpenReview</a> · <a href="https://github.com/ycsama0703">GitHub</a>
       
+  - title: News
+    data_news:
+      limit: 5
+
   - title: Research Interests
     entries:
       - title: AI-Driven Financial Research and Investment Systems.
