@@ -110,6 +110,13 @@ def main():
 
     pubs.sort(key=lambda p: (p["year"] or "0"), reverse=True)
 
+    # Never clobber a good file with an empty result: if both fetchers failed
+    # (API change, network, auth), pubs is [] and writing it would silently
+    # blank the publications section on the next scheduled run.
+    if not pubs:
+        print("Fetched 0 publications — refusing to overwrite.", file=sys.stderr)
+        sys.exit(1)
+
     out_path = os.path.abspath(OUTPUT)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:

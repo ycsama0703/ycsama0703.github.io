@@ -19,9 +19,22 @@
      -%}
     {%-endif-%}
 
-    {%-if item.data_publications-%}
+    {%-if item.data_news-%}
+      {%-assign news_limit = item.data_news.limit | default: 99-%}
       <ul>
-        {%-for p in site.data.publications-%}
+        {%-for n in site.data.news limit: news_limit-%}
+          <li><span>{{ n.date }}</span> {{ n.text }}</li>
+        {%-endfor-%}
+      </ul>
+    {%-endif-%}
+
+    {%-if item.data_publications-%}
+      {%-assign pubs = site.data.publications-%}
+      {%-if site.data.publications_manual-%}
+        {%-assign pubs = site.data.publications_manual | concat: site.data.publications-%}
+      {%-endif-%}
+      <ul>
+        {%-for p in pubs-%}
           <li>
             {%- if p.openreview -%}<a href="{{ p.openreview }}">{{ p.title }}</a>{%- else -%}{{ p.title }}{%- endif -%}
             <ul>
@@ -35,6 +48,9 @@
                 {%- if p.venue %}{{ p.venue }}{% endif -%}
                 {%- if p.year %}, {{ p.year }}{% endif -%}
                 {%- if p.pdf %} · <a href="{{ p.pdf }}">PDF</a>{% endif -%}
+                {%- if p.arxiv %} · <a href="{{ p.arxiv }}">arXiv</a>{% endif -%}
+                {%- if p.code %} · <a href="{{ p.code }}">Code</a>{% endif -%}
+                {%- if p.page %} · <a href="{{ p.page }}">Project</a>{% endif -%}
               </li>
             </ul>
           </li>

@@ -1,0 +1,20 @@
+# Hand-written publications. The daily OpenReview bot NEVER touches this file.
+#
+# Use this for anything OpenReview won't have — e.g. venues that run on
+# Microsoft CMT (ICAIF main track), or papers where you want to attach a
+# code/project link that OpenReview has no field for.
+#
+# Rendered ABOVE the auto-synced list. When a paper later shows up on
+# OpenReview, delete its entry here to avoid showing it twice.
+#
+# Fields: title (required), authors (list), venue, year, pdf, arxiv, code, page
+#
+# - title: "Paper title here"
+#   authors:
+#     - Yuncong Liu
+#     - Co Author
+#   venue: ICAIF
+#   year: '2026'
+#   pdf: https://...
+#   arxiv: https://arxiv.org/abs/...
+#   code: https://github.com/...
