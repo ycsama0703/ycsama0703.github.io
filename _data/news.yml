@@ -1,8 +1,12 @@
 # Newest first. `date` is shown verbatim, so use whatever granularity you want.
 # `text` may contain HTML.
+#
+# Wrap emoji in <span class="emoji">…</span>: dark mode inverts the whole
+# body, and the theme's .emoji rule inverts them back so they keep their
+# real colours. Without it 🎉 turns blue-green.
 
 - date: "2026-10"
-  text: "Two papers accepted at <b>ICAIF 2026</b>."
+  text: "Two papers accepted at <b>ICAIF 2026</b>. <span class=\"emoji\">🎉</span>"
 
 - date: "2025-08"
   text: "Started my PhD at <a href='https://www.aidf.nus.edu.sg'>AIDF</a>, NUS."
