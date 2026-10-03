@@ -1,0 +1,14 @@
+# Header carousel. Order is display order; the first one shows on load.
+#
+# All images are pre-cropped to 3:2 and 1152px wide — twice the 576px content
+# column, so they stay sharp on retina without shipping a multi-megabyte file.
+# Keep new ones to the same ratio or the frame will jump height when switching.
+
+- src: /assets/gallery/gallery-1.jpg
+  alt: On a park bench in late autumn
+
+- src: /assets/gallery/gallery-2.jpg
+  alt: Carving a turn on a snowboard
+
+- src: /assets/gallery/gallery-3.jpg
+  alt: On an Arctic beach, seals and a glacier behind

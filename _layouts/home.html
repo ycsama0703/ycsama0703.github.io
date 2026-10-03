@@ -1,11 +1,24 @@
 ---
 layout: default
 ---
-<!-- 个人照片部分 -->
-<div class="profile-banner">
-  <img src="{{ '/assets/personal_image_v2.jpg' | relative_url }}" 
-       alt="{{ site.title }}" 
-       class="profile-image">
+<!-- 个人照片轮播 -->
+<div class="gallery" id="gallery">
+  <div class="gallery-frame">
+    {%-for g in site.data.gallery-%}
+      <img src="{{ g.src | relative_url }}" alt="{{ g.alt }}"
+           class="gallery-img{% if forloop.first %} is-on{% endif %}"
+           {% unless forloop.first %}loading="lazy"{% endunless %}>
+    {%-endfor-%}
+  </div>
+
+  {%-if site.data.gallery.size > 1-%}
+  <button class="gallery-nav gallery-prev" type="button" aria-label="Previous photo">
+    <svg viewBox="0 0 8 12" shape-rendering="crispEdges" fill="currentColor"><rect x="5" y="0" width="2" height="2"/><rect x="3" y="2" width="2" height="2"/><rect x="1" y="4" width="2" height="2"/><rect x="1" y="6" width="2" height="2"/><rect x="3" y="8" width="2" height="2"/><rect x="5" y="10" width="2" height="2"/></svg>
+  </button>
+  <button class="gallery-nav gallery-next" type="button" aria-label="Next photo">
+    <svg viewBox="0 0 8 12" shape-rendering="crispEdges" fill="currentColor"><rect x="1" y="0" width="2" height="2"/><rect x="3" y="2" width="2" height="2"/><rect x="5" y="4" width="2" height="2"/><rect x="5" y="6" width="2" height="2"/><rect x="3" y="8" width="2" height="2"/><rect x="1" y="10" width="2" height="2"/></svg>
+  </button>
+  {%-endif-%}
 </div>
 
 <header>
@@ -20,27 +33,95 @@ layout: default
 {{ content }}
 
 <style>
-  /* 照片容器样式 */
-  .profile-image {
-  border: none;
-  transform: translateZ(0); /* 触发GPU加速 */
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.3),
-    0 10px 15px -3px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+  /* ---------- Header carousel ----------
+     Fixed 3:2 frame so switching never reflows the page. Slides are stacked
+     and cross-faded rather than translated: with three images the simpler
+     mechanism is easier to reason about and needs no transform bookkeeping. */
+  .gallery { position: relative; margin-bottom: 1.4rem; }
 
-  .profile-image:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 8px 12px rgba(0, 0, 0, 0.4),
-      0 15px 25px -5px rgba(0, 0, 0, 0.3);
+  .gallery-frame {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,.3), 0 10px 15px -3px rgba(0,0,0,.25);
   }
 
-  /* 响应式调整 */
+  .gallery-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  .gallery-img.is-on { opacity: 1; }
+
+  /* Arrows sit over the photo, so they carry their own shadow to stay
+     readable on a light frame as well as a dark one. */
+  .gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    opacity: .55;
+    transition: opacity .15s ease;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,.85));
+    -webkit-tap-highlight-color: transparent;
+  }
+  .gallery-nav svg { width: 14px; height: 21px; }
+  .gallery-nav:hover, .gallery-nav:focus-visible { opacity: 1; }
+  .gallery-nav:focus-visible { outline: 1px solid currentColor; outline-offset: -4px; }
+  .gallery-prev { left: 2px; }
+  .gallery-next { right: 2px; }
+
+
   @media (max-width: 768px) {
-    .profile-image {
-      max-height: 200px;
-    }
+    .gallery-nav { width: 30px; height: 38px; }
   }
 </style>
+
+<script>
+  (function () {
+    var root = document.getElementById("gallery");
+    if (!root) return;
+    var imgs = [].slice.call(root.querySelectorAll(".gallery-img"));
+    if (imgs.length < 2) return;
+
+    var at = 0;
+    function go(n) {
+      at = (n + imgs.length) % imgs.length;
+      imgs.forEach(function (el, i) { el.classList.toggle("is-on", i === at); });
+    }
+
+    root.querySelector(".gallery-prev").addEventListener("click", function () { go(at - 1); });
+    root.querySelector(".gallery-next").addEventListener("click", function () { go(at + 1); });
+
+    // Arrow keys work once the carousel has been interacted with.
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft")  { go(at - 1); e.preventDefault(); }
+      if (e.key === "ArrowRight") { go(at + 1); e.preventDefault(); }
+    });
+
+    // Horizontal swipe. The 40px floor keeps a vertical scroll from paging.
+    var x0 = null, y0 = null;
+    root.addEventListener("touchstart", function (e) {
+      x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+    }, { passive: true });
+    root.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      var dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? at + 1 : at - 1);
+      x0 = y0 = null;
+    }, { passive: true });
+
+    go(0);
+  })();
+</script>
