@@ -140,3 +140,15 @@ h1::after {
 @media (max-width: 480px) {
   #scheme-toggle { top: 8px; right: 8px; }
 }
+
+/* ---------- Research-interest questions ----------
+   A block span rather than a nested <ul>: the theme's nesting would put a
+   bullet in front of each question, which reads oddly. No italic either —
+   VT323 ships no oblique face, so the browser would synthesise one and
+   shear the pixels. Indent and opacity carry the hierarchy instead. */
+.q {
+  display: block;
+  margin-left: 1.1em;
+  opacity: 0.58;
+  line-height: 1.35;
+}
