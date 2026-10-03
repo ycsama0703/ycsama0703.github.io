@@ -1,247 +1,142 @@
 /* ============================================================
-   Pixel / digital retro theme
-   - VT323 for body (terminal-ish, readable)
-   - Press Start 2P for headings (chunky pixel)
-   - Deep near-black background, cyan phosphor glow
-   - Pixel block cursor + custom system cursor
+   Pixel-minimal — academic homepage on top of no-style-please.
+
+   Keeps the pixel character (Silkscreen headings, VT323 body) but
+   drops what made the old theme hard to read: chunky Press Start 2P,
+   disabled antialiasing, a 22s looping backdrop, CRT scanlines and a
+   70-particle canvas.
+
+   Sizes are multiples of 8 so the bitmap glyphs land on whole pixels.
+   Both faces sit small in their em box, hence the large px values.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400&family=VT323&display=swap');
 
-/* ---------- Pixel-perfect rendering ---------- */
-html {
-  image-rendering: pixelated;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
+/* ---------- Type ---------- */
+body, p, li, a, span, div, td, th, blockquote, input, button, textarea {
+  font-family: 'VT323', ui-monospace, 'Courier New', monospace;
+  font-size: 22px;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
 }
 
-/* ---------- Fonts ---------- */
-body, p, li, a, span, div, td, th, blockquote, code, pre, input, button, textarea {
-  font-family: 'VT323', 'Courier New', monospace !important;
-  font-size: 20px !important;
-  letter-spacing: 0.5px;
-}
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Press Start 2P', 'VT323', monospace !important;
-  line-height: 1.6 !important;
-  letter-spacing: 1px;
+  /* Silkscreen has no CJK; the chain hands 刘云从 to the system face.
+     Swap in 'DotGothic16' before the sans fallback to pixelate those too. */
+  font-family: 'Silkscreen', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
 }
-h1 { font-size: 22px !important; }
-h2 { font-size: 18px !important; }
-h3 { font-size: 15px !important; }
-h4, h5, h6 { font-size: 13px !important; }
+h1 { font-size: 32px; margin: .1em 0 .5em; }
+h2 { font-size: 24px; margin: 1em 0 .35em; }
+h3 { font-size: 20px; }
+h4, h5, h6 { font-size: 16px; }
 
-/* ---------- Animated dark backdrop ----------
-   Theme dark mode applies filter:invert(1) on body, so we counter it
-   on ::before with another invert(1). Author colors here = what the
-   user actually sees in dark mode. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(ellipse at 20% 10%, #0a0f1f 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 90%, #07101a 0%, transparent 55%),
-    linear-gradient(125deg, #02030a, #06081a, #03060f, #01030a);
-  background-size: 200% 200%, 200% 200%, 400% 400%;
-  animation: bgShift 22s ease infinite;
-  opacity: 1;
-  pointer-events: none;
-}
-body[a="dark"]::before,
-body[a="auto"]::before {
-  filter: invert(1);
-}
-@keyframes bgShift {
-  0%   { background-position: 0% 0%, 100% 100%, 0% 50%; }
-  50%  { background-position: 100% 50%, 0% 50%, 100% 50%; }
-  100% { background-position: 0% 0%, 100% 100%, 0% 50%; }
-}
+code, pre { font-family: 'VT323', ui-monospace, monospace; }
+small { font-size: 0.82em; opacity: 0.75; }
 
-/* ---------- CRT scanline overlay ---------- */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.0) 0px,
-    rgba(0, 0, 0, 0.0) 2px,
-    rgba(0, 0, 0, 0.18) 3px,
-    rgba(0, 0, 0, 0.0) 4px
-  );
-  mix-blend-mode: multiply;
-}
-body[a="dark"]::after,
-body[a="auto"]::after {
-  filter: invert(1);
-}
+/* ---------- Background ----------
+   The theme renders dark mode as filter:invert(1) over a white page, so
+   plain white becomes #000 — harsh against light text. The value below is
+   PRE-INVERTED: #ededed inverts to #121212, a near-black that is easier on
+   the eyes. Light mode shows #ededed, which also reads softer than white. */
+body { background: #ededed; }
 
-/* ---------- Particle canvas ---------- */
-#cool-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.85;
+/* ---------- Flat background: no animation, no scanlines ---------- */
+body::before,
+body::after { content: none !important; }
+
+/* ---------- Links ----------
+   Dark mode is filter:invert(1) over the whole body, so a colour written
+   once would appear as its own inverse in the other mode. The two modes are
+   therefore set separately, and the dark value is written PRE-INVERTED:
+   #845608 is what the browser must receive for #7ba9f7 to appear. */
+a { text-decoration: underline; text-underline-offset: 2px; }
+
+body[a="auto"] a,
+body[a="light"] a { color: #1d4ed8; }                 /* light: blue-700 */
+body[a="auto"] a:hover,
+body[a="light"] a:hover { color: #1e3a8a; }           /* light: deeper on hover */
+
+@media (prefers-color-scheme: dark) {
+  body[a="auto"] a { color: #845608; }                /* renders #7ba9f7 */
+  body[a="auto"] a:hover { color: #5c3902; }          /* renders #a3c6fd */
 }
-body[a="dark"] #cool-canvas,
-body[a="auto"] #cool-canvas {
-  filter: invert(1);
+body[a="dark"] a { color: #845608; }
+body[a="dark"] a:hover { color: #5c3902; }
+
+/* ---------- Media: photo stays a photo, not pixel art ---------- */
+img { border-radius: 2px; image-rendering: auto; }
+
+/* ---------- Code / quotes ---------- */
+blockquote {
+  border-left: 3px solid rgba(128,128,128,0.35);
+  padding-left: 0.9em;
+}
+code, pre {
+  background: rgba(128,128,128,0.12);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+pre { padding: 0.7em 0.9em; }
+pre code { background: none; padding: 0; }
+
+/* ---------- Date column in News / Publications ---------- */
+li > span:first-child {
+  display: inline-block;
+  min-width: 5.6em;
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Page fade-in ---------- */
-main.page-content {
-  animation: fadeUp 0.7s steps(8, end) both;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------- Heading phosphor glow + blink caret ----------
-   Colors below are PRE-INVERTED so that the body filter:invert(1)
-   in dark mode renders them as the intended violet/purple phosphor.
-   Target rendered color in dark mode ≈ rgb(170, 130, 255) (violet). */
-h1, h2, h3 {
-  text-shadow:
-    0 0 4px rgba(85, 125, 0, 0.55),
-    0 0 12px rgba(110, 90, 0, 0.35);
-  transition: text-shadow 0.2s steps(4);
-}
-h1:hover, h2:hover, h3:hover {
-  text-shadow:
-    0 0 6px rgba(75, 120, 0, 0.95),
-    0 0 18px rgba(95, 100, 0, 0.7);
-}
+/* ---------- The one kept flourish ---------- */
 h1::after {
   content: "_";
   display: inline-block;
-  margin-left: 4px;
-  animation: blink 1s steps(2) infinite;
-  color: inherit;
+  margin-left: 3px;
+  opacity: 0.5;
+  animation: caret 1.1s steps(2) infinite;
 }
-@keyframes blink {
-  50% { opacity: 0; }
-}
+@keyframes caret { 50% { opacity: 0; } }
 
-/* ---------- Animated link underline ---------- */
-a {
-  position: relative;
-  transition: color 0.2s steps(4), text-shadow 0.2s steps(4);
-}
-a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform 0.25s steps(6);
-}
-a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left center;
-}
-a:hover {
-  /* pre-inverted: renders as violet in dark mode */
-  text-shadow: 0 0 6px rgba(85, 125, 0, 0.9);
-}
-
-/* ---------- Image: keep pixel feel, no rounded corners ---------- */
-img {
-  border-radius: 0;
-  image-rendering: pixelated;
-  transition: transform 0.2s steps(4), box-shadow 0.2s steps(4);
-}
-img:hover {
-  transform: translate(-2px, -2px);
-  /* pre-inverted: renders as violet shadow */
-  box-shadow: 4px 4px 0 rgba(85, 125, 0, 0.6);
-}
-
-/* ---------- Code / blockquote (colors pre-inverted for dark mode) ---------- */
-blockquote {
-  border-left: 4px solid rgba(85, 125, 0, 0.7) !important;
-  padding-left: 0.8em !important;
-  background: rgba(225, 225, 225, 0.25) !important;
-}
-code, pre {
-  background: rgba(255, 255, 255, 0.92) !important;
-  color: #2d1066 !important; /* renders as light violet */
-  border-radius: 0 !important;
-  border: 1px solid rgba(85, 125, 0, 0.3);
-  padding: 0 4px;
-}
-
-/* ---------- Pixel system cursor ----------
-   16x16 pixel arrow rendered as SVG data URI. White fill + black outline
-   so it stays visible on any background. CSS cursors are OS-rendered and
-   are NOT affected by the body's invert() filter, so the colors are literal.
-   Hotspot at (1,1) — the tip of the arrow. */
-html, body {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='0' y='0' width='1' height='1' fill='black'/><rect x='0' y='1' width='2' height='1' fill='black'/><rect x='0' y='2' width='1' height='1' fill='black'/><rect x='2' y='2' width='1' height='1' fill='black'/><rect x='0' y='3' width='1' height='1' fill='black'/><rect x='3' y='3' width='1' height='1' fill='black'/><rect x='0' y='4' width='1' height='1' fill='black'/><rect x='4' y='4' width='1' height='1' fill='black'/><rect x='0' y='5' width='1' height='1' fill='black'/><rect x='5' y='5' width='1' height='1' fill='black'/><rect x='0' y='6' width='1' height='1' fill='black'/><rect x='6' y='6' width='1' height='1' fill='black'/><rect x='0' y='7' width='1' height='1' fill='black'/><rect x='7' y='7' width='1' height='1' fill='black'/><rect x='0' y='8' width='1' height='1' fill='black'/><rect x='8' y='8' width='1' height='1' fill='black'/><rect x='0' y='9' width='1' height='1' fill='black'/><rect x='9' y='9' width='1' height='1' fill='black'/><rect x='0' y='10' width='1' height='1' fill='black'/><rect x='6' y='10' width='5' height='1' fill='black'/><rect x='0' y='11' width='1' height='1' fill='black'/><rect x='3' y='11' width='1' height='1' fill='black'/><rect x='6' y='11' width='1' height='1' fill='black'/><rect x='0' y='12' width='2' height='1' fill='black'/><rect x='4' y='12' width='1' height='1' fill='black'/><rect x='6' y='12' width='1' height='1' fill='black'/><rect x='4' y='13' width='1' height='1' fill='black'/><rect x='7' y='13' width='1' height='1' fill='black'/><rect x='5' y='14' width='1' height='1' fill='black'/><rect x='8' y='14' width='1' height='1' fill='black'/><rect x='6' y='15' width='2' height='1' fill='black'/><rect x='1' y='2' width='1' height='1' fill='white'/><rect x='1' y='3' width='2' height='1' fill='white'/><rect x='1' y='4' width='3' height='1' fill='white'/><rect x='1' y='5' width='4' height='1' fill='white'/><rect x='1' y='6' width='5' height='1' fill='white'/><rect x='1' y='7' width='6' height='1' fill='white'/><rect x='1' y='8' width='7' height='1' fill='white'/><rect x='1' y='9' width='8' height='1' fill='white'/><rect x='1' y='10' width='5' height='1' fill='white'/><rect x='1' y='11' width='2' height='1' fill='white'/><rect x='4' y='11' width='2' height='1' fill='white'/><rect x='5' y='12' width='1' height='1' fill='white'/><rect x='5' y='13' width='2' height='1' fill='white'/><rect x='6' y='14' width='2' height='1' fill='white'/></svg>") 1 1, default;
-}
-a, button { cursor: pointer; }
-
-/* ---------- Top-level menu section titles ----------
-   Pixel font + amber phosphor + uppercase so they read as section headers.
-   High specificity + !important on everything to override the broad
-   "body, p, li, ..." font rule earlier in this file. */
-main.page-content .w ul.menu-top { padding-left: 0 !important; list-style: none !important; margin: 0 !important; }
-main.page-content .w ul.menu-top > li {
-  font-family: 'Press Start 2P', 'VT323', monospace !important;
-  font-size: 14px !important;
-  color: rgb(85, 125, 0) !important;       /* renders as amber after body invert */
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  margin-top: 2.5rem !important;
-  margin-bottom: 0.6rem !important;
-  line-height: 1.6 !important;
-  list-style: none !important;
-  padding-left: 0 !important;
-}
-/* First top-level item is the intro line, not a section title */
-main.page-content .w ul.menu-top > li:first-child {
-  margin-top: 0.5rem !important;
-  text-transform: none !important;
-  font-family: 'VT323', monospace !important;
-  font-size: 22px !important;
-  color: inherit !important;
-  letter-spacing: 0.5px !important;
-  list-style: disc !important;
-  padding-left: 0 !important;
-  margin-left: 1.5em;
-}
-/* Children of top-level items: revert to body styling */
-main.page-content .w ul.menu-top > ul { padding-left: 2em !important; margin: 0 !important; }
-main.page-content .w ul.menu-top > ul li {
-  font-family: 'VT323', 'Courier New', monospace !important;
-  font-size: 20px !important;
-  color: inherit !important;
-  text-transform: none !important;
-  letter-spacing: 0.5px !important;
-  margin-top: 0.2rem !important;
-}
-
-/* ---------- Highlight self in author lists ----------
-   Pre-inverted: color rgb(85, 125, 0) renders as violet rgb(170, 130, 255)
-   in dark mode, matching the heading phosphor glow. */
-.me {
-  color: rgb(85, 125, 0);
-  font-weight: bold;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 2px;
-}
-
-/* ---------- Reduced motion ---------- */
+/* ---------- Accessibility ---------- */
 @media (prefers-reduced-motion: reduce) {
-  body::before, main.page-content, a::after, h1::after { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Colour-scheme toggle ----------
+   Sits in the body, so dark mode inverts it along with everything else;
+   currentColor therefore stays legible in both schemes without special
+   casing. No background — only the glyph, to stay out of the way. */
+#scheme-toggle {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+#scheme-toggle svg { width: 30px; height: 30px; }
+#scheme-toggle:hover,
+#scheme-toggle:focus-visible { opacity: 1; }
+#scheme-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 2px; }
+
+@media (max-width: 480px) {
+  #scheme-toggle { top: 8px; right: 8px; }
 }
