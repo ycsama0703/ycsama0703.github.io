@@ -8,7 +8,7 @@ entries:
       - title: You can find my <a href='/assets/Curriculum_Vitae.pdf'>CV</a> here.
       - title: My <a href="https://scholar.google.com/citations?user=1shkb2gAAAAJ&hl=en">Google Scholar</a> · <a href="https://openreview.net/profile?id=~Yuncong_Liu6">OpenReview</a> · <a href="https://github.com/ycsama0703">GitHub</a>
       
-  - title: Research Interests
+  - title: Interests
     entries:
       - title: 'Agentic systems for financial research<span class="q">Can an agent find a question worth asking?</span>'
       - title: 'Identifiability of model-derived signals<span class="q">Was the structure in the data, or in the model?</span>'
@@ -18,7 +18,7 @@ entries:
     entries:
       - title: National University of Singapore 
         entries:
-          - title: PhD, 2025.8 - 2028.6(Expected)
+          - title: PhD, 2025.8 - 2029.6 (Expected)
       - title: Columbia University 
         entries:
           - title: MA, 2023.9 - 2025.3
