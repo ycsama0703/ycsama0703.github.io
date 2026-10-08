@@ -29,3 +29,13 @@
 #   code: https://github.com/...
 #   thumb: /assets/pubs/my-paper.png
 #   thumb_linework: true
+
+- title: Lead-Lag Origination for Prioritizing Financial KOL Narratives
+  authors:
+    - Yuncong Liu
+    - Yao Lu
+  venue: ICAIF (Poster)
+  year: '2026'
+  pdf: /assets/papers/llr-icaif26.pdf
+  thumb: /assets/pubs/llr.png
+  thumb_alt: The Lead-Lag Router scoring candidate frames into a top-b shortlist

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Prepare a publication teaser figure for assets/pubs/.
 
-The frame on the page is 4:3 and uses object-fit: cover, so it is always
-filled edge to edge — whatever this writes is what shows, and anything not
-4:3 gets cropped by the browser. So this script always hands back exactly
-4:3.
+The frame on the page is 4:3 for every entry and uses object-fit: cover, so
+it is always filled edge to edge and anything not 4:3 gets cropped by the
+browser. This always writes exactly 4:3, so nothing is.
+
+A wide pipeline diagram has no 4:3 crop that keeps both ends of it. Pick the
+end that carries the paper rather than shrinking the whole thing.
 
 Typical use: a paper's Fig. 1 is a tall flowchart, and only the top third of
 it is worth showing at thumbnail size.
@@ -54,7 +56,7 @@ def to_ratio(im, anchor):
     if abs(w / h - RATIO) < 0.005:
         return im
     if w / h > RATIO:                       # too wide -> trim width, always centred
-        new = int(round(h * RATIO))           # (anchor only has a meaning vertically)
+        new = int(round(h * RATIO))         # (anchor only has a meaning vertically)
         off = (w - new) // 2
         return im.crop((off, 0, off + new, h))
     new = int(round(w / RATIO))             # too tall -> trim height
