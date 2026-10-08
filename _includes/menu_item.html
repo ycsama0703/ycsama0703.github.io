@@ -33,26 +33,96 @@
       {%-if site.data.publications_manual-%}
         {%-assign pubs = site.data.publications_manual | concat: site.data.publications-%}
       {%-endif-%}
-      <ul>
+      <ul class="pub-list">
         {%-for p in pubs-%}
-          <li>
-            {%- if p.openreview -%}<a href="{{ p.openreview }}">{{ p.title }}</a>{%- else -%}{{ p.title }}{%- endif -%}
-            <ul>
-              <li>
-                {%- for a in p.authors -%}
-                  {%- if a == site.author -%}<span class="me">{{ a }}</span>{%- else -%}{{ a }}{%- endif -%}
-                  {%- unless forloop.last %}, {% endunless -%}
-                {%- endfor -%}
-              </li>
-              <li>
-                {%- if p.venue %}{{ p.venue }}{% endif -%}
-                {%- if p.year %}, {{ p.year }}{% endif -%}
-                {%- if p.pdf %} · <a href="{{ p.pdf }}">PDF</a>{% endif -%}
-                {%- if p.arxiv %} · <a href="{{ p.arxiv }}">arXiv</a>{% endif -%}
-                {%- if p.code %} · <a href="{{ p.code }}">Code</a>{% endif -%}
-                {%- if p.page %} · <a href="{{ p.page }}">Project</a>{% endif -%}
-              </li>
-            </ul>
+          {%-comment-%}
+            A hand-written entry carries everything inline. A bot-synced one
+            only has what OpenReview knows, and the daily sync rewrites
+            publications.yml wholesale, so anything added there would be lost:
+            _data/pub_overrides.yml supplies the rest, keyed by OpenReview id.
+            `hide` drops a link the override replaces — e.g. the OpenReview PDF
+            once an arXiv link is listed.
+          {%-endcomment-%}
+          {%-assign t_src = p.thumb-%}{%-assign t_alt = p.thumb_alt-%}{%-assign t_line = p.thumb_linework-%}
+          {%-assign l_pdf = p.pdf-%}{%-assign l_arxiv = p.arxiv-%}{%-assign l_code = p.code-%}
+          {%-assign l_page = p.page-%}{%-assign l_or = p.openreview-%}{%-assign venue = p.venue-%}
+          {%-assign ov = site.data.pub_overrides[p.id]-%}
+          {%-if ov-%}
+            {%-if ov.thumb %}{%-assign t_src = ov.thumb-%}{%-endif-%}
+            {%-if ov.thumb_alt %}{%-assign t_alt = ov.thumb_alt-%}{%-endif-%}
+            {%-if ov.thumb_linework %}{%-assign t_line = ov.thumb_linework-%}{%-endif-%}
+            {%-if ov.pdf %}{%-assign l_pdf = ov.pdf-%}{%-endif-%}
+            {%-if ov.arxiv %}{%-assign l_arxiv = ov.arxiv-%}{%-endif-%}
+            {%-if ov.code %}{%-assign l_code = ov.code-%}{%-endif-%}
+            {%-if ov.page %}{%-assign l_page = ov.page-%}{%-endif-%}
+            {%-if ov.venue %}{%-assign venue = ov.venue-%}{%-endif-%}
+            {%-if ov.hide-%}
+              {%-if ov.hide contains "pdf" %}{%-assign l_pdf = false-%}{%-endif-%}
+              {%-if ov.hide contains "arxiv" %}{%-assign l_arxiv = false-%}{%-endif-%}
+              {%-if ov.hide contains "code" %}{%-assign l_code = false-%}{%-endif-%}
+              {%-if ov.hide contains "page" %}{%-assign l_page = false-%}{%-endif-%}
+              {%-if ov.hide contains "openreview" %}{%-assign l_or = false-%}{%-endif-%}
+            {%-endif-%}
+          {%-endif-%}
+          {%-assign t_alt = t_alt | default: p.title-%}
+          {%-assign link = l_page | default: l_arxiv | default: l_or | default: l_pdf-%}
+          <li class="pub">
+            {%-if t_src-%}
+              <div class="pub-thumb">
+                {%-if link-%}<a href="{{ link }}" aria-hidden="true" tabindex="-1">{%-endif-%}
+                  <img src="{{ t_src | relative_url }}" alt="{{ t_alt | escape }}" loading="lazy"{% if t_line %} class="ioda"{% endif %}>
+                {%-if link-%}</a>{%-endif-%}
+              </div>
+            {%-endif-%}
+            <div class="pub-body">
+              <div class="pub-title">
+                {%-if link-%}<a href="{{ link }}">{{ p.title }}</a>{%-else-%}{{ p.title }}{%-endif-%}
+              </div>
+              {%-if p.authors-%}
+                <div class="pub-authors">
+                  {%-for a in p.authors-%}
+                    {%-comment-%}
+                      Initials, as in a reference list: every given name becomes
+                      "X." and the final word is kept whole, so "Christina Dan
+                      Wang" reads "C. D. Wang". A single-word name (or a CJK
+                      one) has no given names to shorten and passes through.
+                      The match against site.author uses the unabbreviated name.
+                    {%-endcomment-%}
+                    {%-assign parts = a | split: " "-%}
+                    {%-assign surname = parts | last-%}
+                    {%-assign initials = ""-%}
+                    {%-for w in parts-%}
+                      {%-unless forloop.last-%}
+                        {%-assign ini = w | slice: 0-%}
+                        {%-assign initials = initials | append: ini | append: ". "-%}
+                      {%-endunless-%}
+                    {%-endfor-%}
+                    {%-assign short = initials | append: surname-%}
+                    {%-if a == site.author-%}<span class="me">{{ short }}</span>{%-else-%}{{ short }}{%-endif-%}
+                    {%-unless forloop.last %}, {% endunless-%}
+                  {%-endfor-%}
+                </div>
+              {%-endif-%}
+              {%-if venue or p.year-%}
+                <div class="pub-meta">
+                  {%-if venue %}{{ venue }}{% endif -%}
+                  {%-if p.year %}{% if venue %}, {% endif %}{{ p.year }}{% endif -%}
+                </div>
+              {%-endif-%}
+              {%-comment-%}
+                OpenReview is not listed: it is a review record, not something a
+                reader wants, and the arXiv page carries the PDF anyway. It stays
+                as a fallback target for the title when nothing better exists.
+              {%-endcomment-%}
+              {%-if l_arxiv or l_pdf or l_code or l_page-%}
+                <div class="pub-links">
+                  {%-if l_arxiv %}<span>[<a href="{{ l_arxiv }}">arXiv</a>]</span>{% endif -%}
+                  {%-if l_pdf %}<span>[<a href="{{ l_pdf }}">PDF</a>]</span>{% endif -%}
+                  {%-if l_code %}<span>[<a href="{{ l_code }}">GitHub</a>]</span>{% endif -%}
+                  {%-if l_page %}<span>[<a href="{{ l_page }}">Project</a>]</span>{% endif -%}
+                </div>
+              {%-endif-%}
+            </div>
           </li>
         {%-endfor-%}
       </ul>

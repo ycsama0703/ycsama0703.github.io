@@ -7,14 +7,25 @@
 # Rendered ABOVE the auto-synced list. When a paper later shows up on
 # OpenReview, delete its entry here to avoid showing it twice.
 #
-# Fields: title (required), authors (list), venue, year, pdf, arxiv, code, page
+# Fields: title (required), authors (list), venue, year, pdf, arxiv, code, page,
+#         thumb, thumb_alt, thumb_linework
+#
+# `thumb` is the teaser / architecture figure shown in the frame on the left.
+# Drop the file in assets/pubs/ (see the README there for sizing) and point at
+# it with a site-root path. Set `thumb_linework: true` for a line diagram on a
+# white background so it inverts along with the page in dark mode; leave it off
+# for photos and screenshots. Entries with no thumb render as plain text.
+#
+# The title links to `page`, else `openreview`, else `arxiv`, else `pdf`.
 #
 # - title: "Paper title here"
 #   authors:
 #     - Yuncong Liu
 #     - Co Author
-#   venue: ICAIF
+#   venue: ICAIF (Poster)
 #   year: '2026'
 #   pdf: https://...
 #   arxiv: https://arxiv.org/abs/...
 #   code: https://github.com/...
+#   thumb: /assets/pubs/my-paper.png
+#   thumb_linework: true

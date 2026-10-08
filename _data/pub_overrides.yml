@@ -1,0 +1,36 @@
+# Extra fields for papers that the OpenReview bot syncs.
+#
+# The daily sync rewrites _data/publications.yml wholesale, so anything added
+# there is wiped. OpenReview also has no field for an arXiv link, a repo, or a
+# teaser figure. Key this file by the paper's OpenReview id (the `id:` field in
+# publications.yml) and it survives every sync.
+#
+# Papers written by hand in publications_manual.yml do NOT belong here — put
+# the fields directly on the entry there.
+#
+# Fields per id (all optional):
+#   thumb           path under /assets/pubs/, e.g. /assets/pubs/fingpt.png
+#   thumb_alt       falls back to the paper title
+#   thumb_linework  true for line-art diagrams on a white background, so they
+#                   invert along with the page in dark mode instead of staying
+#                   bright. Leave it off for photos, screenshots, or anything
+#                   with real colours.
+#   arxiv, pdf, code, page, venue
+#                   add or replace what OpenReview supplied. `code` renders as
+#                   [GitHub]. OpenReview itself is never listed as a link — it
+#                   is a review record, and the arXiv page carries the PDF —
+#                   but it still backs the title link when nothing else does.
+#   hide            list of links to drop: pdf, arxiv, code, page, openreview.
+#                   Use it when an override supersedes one — listing both an
+#                   arXiv link and the OpenReview PDF is just noise.
+#
+# FinGPT (AAAI Good-Data 2025). Top 45% of the paper's Fig. 1 — the data
+# collection and processing bands — cropped from the arXiv source package
+# (arXiv:2412.10823). The whole flowchart is far too tall to read at that size.
+# No thumb_linework: the bands are colour-coded, so it keeps its real colours
+# in dark mode rather than being inverted along with the page.
+l2nHuTk6nc:
+  thumb: /assets/pubs/fingpt.png
+  thumb_alt: Weekly data collection feeding a data-processing stage with news clustering
+  arxiv: https://arxiv.org/abs/2412.10823
+  hide: [pdf]          # the OpenReview PDF; the arXiv page already links one

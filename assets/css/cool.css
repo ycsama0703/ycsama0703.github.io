@@ -154,6 +154,58 @@ h1::after {
   #scheme-toggle { top: 8px; right: 8px; }
 }
 
+/* ---------- Publications ----------
+   Teaser figure on the left, text on the right. The content column is 576px
+   (.w is 640px minus 2rem of padding each side), so a 190px figure leaves a
+   little under 370px for the title — two or three lines for a long one. That
+   width is a balance: wider makes the figure legible but pushes the title
+   onto another line, which is the thing it has to stay level with.
+
+   No frame. A border drawn in currentColor is full-strength black on the
+   light scheme and fights the figure; the teaser is a white-backed diagram
+   and reads as its own block without one.
+
+   The figure is optional: entries without a thumbnail (anything the OpenReview
+   bot syncs, until an id is added to _data/pub_overrides.yml) render as a
+   full-width text block rather than leaving a hole.
+
+   Dark mode is filter:invert(1) on <body> and the theme counter-inverts <img>,
+   so a photo teaser keeps its real colours. Line art on white usually reads
+   better inverted along with the page instead — `thumb_linework: true` adds
+   the theme's .ioda class, which cancels the counter-invert. */
+.pub-list { list-style: none; padding: 0; margin: 0; }
+.pub-list > li { margin: 0 0 1.6em; }
+.pub-list > li:last-child { margin-bottom: 0; }
+
+.pub { display: flex; align-items: flex-start; gap: 16px; }
+
+.pub-thumb {
+  box-sizing: border-box;
+  flex: 0 0 190px;
+  line-height: 0;                 /* no descender gap under the image */
+}
+.pub-thumb a { display: block; }
+.pub-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;              /* fill the box edge to edge */
+}
+
+.pub-body { flex: 1 1 auto; min-width: 0; }
+.pub-title { font-weight: bold; line-height: 1.2; }
+.pub-meta { opacity: 0.7; }
+.me { font-weight: bold; text-decoration: underline; }   /* own name */
+
+/* Bracketed link row, e.g. [PDF] [arXiv] [Code]. The brackets are plain text
+   outside the anchor so they are neither underlined nor clickable. */
+.pub-links { display: flex; flex-wrap: wrap; gap: 0 0.5em; }
+
+@media (max-width: 520px) {
+  .pub { flex-direction: column; gap: 8px; }
+  .pub-thumb { flex: 0 0 auto; width: 100%; max-width: 260px; }
+}
+
 /* ---------- Research-interest questions ----------
    A block span rather than a nested <ul>: the theme's nesting would put a
    bullet in front of each question, which reads oddly. No italic either —
