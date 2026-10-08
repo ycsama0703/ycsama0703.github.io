@@ -111,12 +111,25 @@ h1::after {
 /* ---------- Colour-scheme toggle ----------
    Sits in the body, so dark mode inverts it along with everything else;
    currentColor therefore stays legible in both schemes without special
-   casing. No background — only the glyph, to stay out of the way. */
+   casing. No background — only the glyph, to stay out of the way.
+
+   NOT position:fixed. Dark mode is filter:invert(1) on <body>, and an
+   element with a filter becomes the containing block for its fixed-position
+   descendants — so in dark mode the button scrolled away with the document
+   and was only clickable at the top of the page. A sticky slot is offset
+   against the scrollport instead, which no ancestor filter can affect, so
+   it behaves identically in both schemes. The slot is zero-height and the
+   button is absolute inside it, so neither takes any layout space. */
+#scheme-toggle-slot {
+  position: sticky;
+  top: 0;
+  height: 0;
+  z-index: 10;
+}
 #scheme-toggle {
-  position: fixed;
+  position: absolute;
   top: 14px;
   right: 16px;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;

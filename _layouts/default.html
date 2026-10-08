@@ -12,7 +12,10 @@
       })();
     </script>
 
-    <button id="scheme-toggle" type="button" aria-label="Toggle colour scheme"></button>
+    <!-- Zero-height sticky slot, not position:fixed — see cool.css for why. -->
+    <div id="scheme-toggle-slot">
+      <button id="scheme-toggle" type="button" aria-label="Toggle colour scheme"></button>
+    </div>
 
     <main class="page-content" aria-label="Content">
       <div class="w">
