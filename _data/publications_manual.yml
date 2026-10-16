@@ -39,3 +39,15 @@
   pdf: /assets/papers/llr-icaif26.pdf
   thumb: /assets/pubs/llr.png
   thumb_alt: The Lead-Lag Router scoring candidate frames into a top-b shortlist
+
+- title: When Does "Post-Call" Begin? An Availability Contract for Earnings-Call NLP Benchmarks
+  authors:
+    - Xiaoyu Ma
+    - Kelvin J.L. Koa
+    - Yuncong Liu
+    - Ke-Wei Huang
+  venue: ICAIF
+  year: '2026'
+  arxiv: https://arxiv.org/abs/2610.21659
+  thumb: /assets/pubs/availability.png
+  thumb_alt: An availability timeline and the return windows built on it

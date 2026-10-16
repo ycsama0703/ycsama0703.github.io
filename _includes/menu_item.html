@@ -84,17 +84,41 @@
                     {%-comment-%}
                       Initials, as in a reference list: every given name becomes
                       "X." and the final word is kept whole, so "Christina Dan
-                      Wang" reads "C. D. Wang". A single-word name (or a CJK
-                      one) has no given names to shorten and passes through.
-                      The match against site.author uses the unabbreviated name.
+                      Wang" reads "C. D. Wang". A given name already written as
+                      initials keeps all of them ("J.L." -> "J. L."), and a
+                      hyphenated one keeps its halves ("Ke-Wei" -> "K.-W.").
+                      A single-word name (or a CJK one) has no given names to
+                      shorten and passes through. The match against site.author
+                      uses the unabbreviated name.
                     {%-endcomment-%}
                     {%-assign parts = a | split: " "-%}
                     {%-assign surname = parts | last-%}
                     {%-assign initials = ""-%}
                     {%-for w in parts-%}
                       {%-unless forloop.last-%}
-                        {%-assign ini = w | slice: 0-%}
-                        {%-assign initials = initials | append: ini | append: ". "-%}
+                        {%-if w contains "."-%}
+                          {%-comment-%}Already initials. "J.L." has to become "J. L.".{%-endcomment-%}
+                          {%-assign pieces = w | split: "."-%}
+                          {%-for q in pieces-%}
+                            {%-assign initials = initials | append: q | append: ". "-%}
+                          {%-endfor-%}
+                        {%-elsif w contains "-"-%}
+                          {%-comment-%}Hyphenated given name: "Ke-Wei" -> "K.-W.".{%-endcomment-%}
+                          {%-assign pieces = w | split: "-"-%}
+                          {%-assign hy = ""-%}
+                          {%-for q in pieces-%}
+                            {%-assign ini = q | slice: 0-%}
+                            {%-if forloop.first-%}
+                              {%-assign hy = ini | append: "."-%}
+                            {%-else-%}
+                              {%-assign hy = hy | append: "-" | append: ini | append: "."-%}
+                            {%-endif-%}
+                          {%-endfor-%}
+                          {%-assign initials = initials | append: hy | append: " "-%}
+                        {%-else-%}
+                          {%-assign ini = w | slice: 0-%}
+                          {%-assign initials = initials | append: ini | append: ". "-%}
+                        {%-endif-%}
                       {%-endunless-%}
                     {%-endfor-%}
                     {%-assign short = initials | append: surname-%}
