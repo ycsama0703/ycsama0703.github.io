@@ -6,9 +6,10 @@
 # real colours. Without it 🎉 turns blue-green.
 
 - date: "2026-10"
-  # No <i>: VT323 ships no oblique face, so a browser-synthesised one shears
-  # the pixels. Quotes carry the title instead, as in .q elsewhere.
-  text: "One paper accepted at the <b>ICAIF 2026</b> workshop &ldquo;Structuring the Unstructured: AI in Private Markets&rdquo;."
+  # Keep each item to one line. The list indents the text past the date, but a
+  # wrapped second line returns to the left margin, so it lands under the date
+  # instead of under the sentence and the column falls apart.
+  text: "One paper accepted at an <b>ICAIF 2026</b> workshop!"
 
 - date: "2026-10"
   text: "Two papers accepted at <b>ICAIF 2026</b>! <span class=\"emoji\">🎉</span>"
