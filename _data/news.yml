@@ -9,7 +9,7 @@
   # Keep each item to one line. The list indents the text past the date, but a
   # wrapped second line returns to the left margin, so it lands under the date
   # instead of under the sentence and the column falls apart.
-  text: "One paper accepted at an <b>ICAIF 2026</b> workshop! <span class=\"emoji\">🎉</span>"
+  text: "One paper accepted at an <b>ICAIF 2026</b> workshop!"
 
 - date: "2026-10"
   text: "Two papers accepted at <b>ICAIF 2026</b>! <span class=\"emoji\">🎉</span>"
