@@ -7,7 +7,7 @@
 # Rendered ABOVE the auto-synced list. When a paper later shows up on
 # OpenReview, delete its entry here to avoid showing it twice.
 #
-# Fields: title (required), authors (list), venue, year, pdf, arxiv, code, page,
+# Fields: title (required), authors (list), venue, year, note, pdf, arxiv, code, page,
 #         thumb, thumb_alt, thumb_linework
 #
 # `thumb` is the teaser / architecture figure shown in the frame on the left.
@@ -18,12 +18,17 @@
 #
 # The title links to `page`, else `openreview`, else `arxiv`, else `pdf`.
 #
+# The meta line reads "<venue> <year>, <note>" — e.g. `venue: ICAIF`, `note: Poster`
+# gives "ICAIF 2026, Poster". Keep the conference name alone in `venue`; put the
+# presentation type or workshop name in `note`.
+#
 # - title: "Paper title here"
 #   authors:
 #     - Yuncong Liu
 #     - Co Author
-#   venue: ICAIF (Poster)
+#   venue: ICAIF
 #   year: '2026'
+#   note: Poster
 #   pdf: https://...
 #   arxiv: https://arxiv.org/abs/...
 #   code: https://github.com/...
@@ -34,8 +39,9 @@
   authors:
     - Yuncong Liu
     - Yao Lu
-  venue: ICAIF (Poster)
+  venue: ICAIF
   year: '2026'
+  note: Poster
   pdf: /assets/papers/llr-icaif26.pdf
   thumb: /assets/pubs/llr.png
   thumb_alt: The Lead-Lag Router scoring candidate frames into a top-b shortlist

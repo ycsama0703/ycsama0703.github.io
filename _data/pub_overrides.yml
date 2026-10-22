@@ -15,11 +15,13 @@
 #                   invert along with the page in dark mode instead of staying
 #                   bright. Leave it off for photos, screenshots, or anything
 #                   with real colours.
-#   arxiv, pdf, code, page, venue
+#   arxiv, pdf, code, page, venue, note
 #                   add or replace what OpenReview supplied. `code` renders as
 #                   [GitHub]. OpenReview itself is never listed as a link — it
 #                   is a review record, and the arXiv page carries the PDF —
 #                   but it still backs the title link when nothing else does.
+#                   The meta line reads "<venue> <year>, <note>", so a workshop
+#                   goes in `note` and `venue` keeps just the conference.
 #   hide            list of links to drop: pdf, arxiv, code, page, openreview.
 #                   Use it when an override supersedes one — listing both an
 #                   arXiv link and the OpenReview PDF is just noise.
@@ -34,3 +36,5 @@ l2nHuTk6nc:
   thumb_alt: Weekly data collection feeding a data-processing stage with news clustering
   arxiv: https://arxiv.org/abs/2412.10823
   hide: [pdf]          # the OpenReview PDF; the arXiv page already links one
+  venue: AAAI          # OpenReview says "AAAI Good-Data"
+  note: Good-Data Workshop

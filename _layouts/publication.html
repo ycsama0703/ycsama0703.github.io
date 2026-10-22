@@ -17,8 +17,7 @@ layout: default
       
       <!-- 发表信息（期刊+年份） -->
       <div class="venue">
-        <em>{{ page.venue }}</em>, 
-        <span class="year">{{ page.year }}</span>
+        <em>{{ page.venue }} <span class="year">{{ page.year }}</span></em>{% if page.note %}, {{ page.note }}{% endif %}
         
         <!-- 显示DOI（如果有） -->
         {% if page.doi %}

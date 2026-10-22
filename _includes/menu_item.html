@@ -45,7 +45,7 @@
           {%-endcomment-%}
           {%-assign t_src = p.thumb-%}{%-assign t_alt = p.thumb_alt-%}{%-assign t_line = p.thumb_linework-%}
           {%-assign l_pdf = p.pdf-%}{%-assign l_arxiv = p.arxiv-%}{%-assign l_code = p.code-%}
-          {%-assign l_page = p.page-%}{%-assign l_or = p.openreview-%}{%-assign venue = p.venue-%}
+          {%-assign l_page = p.page-%}{%-assign l_or = p.openreview-%}{%-assign venue = p.venue-%}{%-assign note = p.note-%}
           {%-assign ov = site.data.pub_overrides[p.id]-%}
           {%-if ov-%}
             {%-if ov.thumb %}{%-assign t_src = ov.thumb-%}{%-endif-%}
@@ -56,6 +56,7 @@
             {%-if ov.code %}{%-assign l_code = ov.code-%}{%-endif-%}
             {%-if ov.page %}{%-assign l_page = ov.page-%}{%-endif-%}
             {%-if ov.venue %}{%-assign venue = ov.venue-%}{%-endif-%}
+            {%-if ov.note %}{%-assign note = ov.note-%}{%-endif-%}
             {%-if ov.hide-%}
               {%-if ov.hide contains "pdf" %}{%-assign l_pdf = false-%}{%-endif-%}
               {%-if ov.hide contains "arxiv" %}{%-assign l_arxiv = false-%}{%-endif-%}
@@ -129,8 +130,9 @@
               {%-endif-%}
               {%-if venue or p.year-%}
                 <div class="pub-meta">
-                  {%-if venue %}{{ venue }}{% endif -%}
-                  {%-if p.year %}{% if venue %}, {% endif %}{{ p.year }}{% endif -%}
+                  {%-assign meta = venue | default: "" | append: " " | append: p.year | strip-%}
+                  {%-if note %}{%-assign meta = meta | append: ", " | append: note-%}{%-endif-%}
+                  {{ meta }}
                 </div>
               {%-endif-%}
               {%-comment-%}
