@@ -42,7 +42,7 @@
   venue: ICAIF
   year: '2026'
   note: Poster
-  pdf: /assets/papers/llr-icaif26.pdf
+  pdf: https://dl.acm.org/doi/epdf/10.1145/3858063.3858748
   thumb: /assets/pubs/llr.png
   thumb_alt: The Lead-Lag Router scoring candidate frames into a top-b shortlist
 
